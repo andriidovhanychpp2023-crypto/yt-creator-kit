@@ -1,4 +1,4 @@
-# Project Developed by US
+# Project Developed by Us
 
 ### One-liner
 An automated toolkit designed to streamline content creation and metadata optimization for the **Brainrot Factory** YouTube channel.
