@@ -10,7 +10,7 @@ An automated toolkit designed to streamline content creation and metadata optimi
 
 ### Deployment Instruction
 1. Clone the repository: `git clone https://github.com/andriidovhanychpp2023-crypto/yt-creator-kit.git`
-2. Create and activate virtual environment: `python -m venv venv` потім `venv\Scripts\activate`
+2. Create and activate virtual environment: `python -m venv venv` `venv\Scripts\activate`
 3. Install dependencies: `pip install -r requirements.txt`
 
 ### MVP Goals
