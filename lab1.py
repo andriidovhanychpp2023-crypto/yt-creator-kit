@@ -1,3 +1,2 @@
-print("Hello world!")
-print("New project")
+print("Happy New Year!")
 
