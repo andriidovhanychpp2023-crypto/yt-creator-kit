@@ -1,2 +1,1 @@
 print("Happy New Year!")
-
