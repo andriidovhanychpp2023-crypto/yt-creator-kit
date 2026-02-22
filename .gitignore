@@ -1,6 +1,18 @@
-node_modules/  
-*.log 
-dist/ 
-.DS_Store 
-Thumbs.db  
+# Артефакти збірки (Крок 4)
+dist/
+build/
+*.spec
+
+# Тимчасові файли Python та Тестів (Крок 6)
+__pycache__/
+.pytest_cache/
+.coverage
+htmlcov/
+report.html
+
+# Конфігурації та секрети
 .env
+
+# Системні файли
+.DS_Store
+Thumbs.db

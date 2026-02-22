@@ -1,0 +1,12 @@
+{
+  "name": "yt-creator-kit",
+  "version": "1.0.0",
+  "description": "YouTube Brainrot Content Creator Kit",
+  "scripts": {
+    "dev": "python logic.py",
+    "lint": "flake8 .",
+    "format": "black .",
+    "build": "pyinstaller --onedir logic.py",
+    "preview": "dist/logic/logic.exe"
+  }
+}
