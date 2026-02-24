@@ -37,3 +37,15 @@ jobs:
           PYTHONPATH: .
         run: |
           pytest
+
+      - name: Build EXE with PyInstaller
+        run: |
+          pip install pyinstaller
+          # Використовуємо src/logic.py як точку входу
+          pyinstaller --onefile src/logic.py
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: logic-executable
+          path: dist/logic.exe
