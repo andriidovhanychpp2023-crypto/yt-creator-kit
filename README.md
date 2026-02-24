@@ -2,6 +2,9 @@
 
 [![Python CI/CD Pipeline](https://github.com/andriidovhanychpp2023-crypto/yt-creator-kit/actions/workflows/ci-cd.yml/badge.svg?branch=main)](https://github.com/andriidovhanychpp2023-crypto/yt-creator-kit/actions/workflows/ci-cd.yml)
 
+## Production & Installation
+sha256:1ce3eb7a35d13cf163f75264724320fbbc9c6c58a10c02a85a5b38bfdccbe91c
+
 ### One-liner
 An automated toolkit designed to streamline content creation and metadata optimization for the **Brainrot Factory** YouTube channel.
 
