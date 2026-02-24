@@ -3,7 +3,7 @@ from playwright.sync_api import sync_playwright
 
 def test_add_brainrot_meme_scenario():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
 
         # Відкриваємо сайт

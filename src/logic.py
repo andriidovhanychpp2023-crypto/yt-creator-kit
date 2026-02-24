@@ -24,11 +24,11 @@ def analyze_brainrot_title(title):
     is_hype = title.isupper()
 
     if has_slang and is_hype:
-        return "ULTRA RIZZ 🔥"
+        return "ULTRA RIZZ"
     elif has_slang:
-        return "BOP ✅"
+        return "BOP"
     else:
-        return "L TITLE 💀"
+        return "L TITLE"
 
 
 # --- НОВИЙ БЛОК ДЛЯ ВЗАЄМОДІЇ ---
