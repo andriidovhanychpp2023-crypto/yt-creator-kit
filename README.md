@@ -1,5 +1,7 @@
 # Project Developed by Us
 
+[![Python CI/CD Pipeline](https://github.com/andriidovhanychpp2023-crypto/yt-creator-kit/actions/workflows/ci-cd.yml/badge.svg?branch=main)](https://github.com/andriidovhanychpp2023-crypto/yt-creator-kit/actions/workflows/ci-cd.yml)
+
 ### One-liner
 An automated toolkit designed to streamline content creation and metadata optimization for the **Brainrot Factory** YouTube channel.
 
