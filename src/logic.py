@@ -2,7 +2,8 @@ import os
 from dotenv import load_dotenv
 from posthog import Posthog
 
-posthog = Posthog('phc_R3d1gye6FUoXi8iKSv79tHAPfzVgiPbYUKSuoCmMNW0', host='https://eu.i.posthog.com')
+posthog_key = os.getenv('POSTHOG_API_KEY')
+posthog = Posthog(posthog_key, host='https://eu.i.posthog.com')
 
 # Завантажуємо змінні з .env
 load_dotenv()
