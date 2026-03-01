@@ -2,11 +2,11 @@ import os
 from dotenv import load_dotenv
 from posthog import Posthog
 
-posthog_key = os.getenv('POSTHOG_API_KEY')
-posthog = Posthog(posthog_key, host='https://eu.i.posthog.com')
-
 # Завантажуємо змінні з .env
 load_dotenv()
+
+posthog_key = os.getenv('POSTHOG_API_KEY')
+posthog = Posthog(posthog_key, host='https://eu.i.posthog.com')
 
 # Отримуємо значення змінної
 status = os.getenv("VITE_APP_STATUS", "Unknown")
