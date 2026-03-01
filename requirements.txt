@@ -1,3 +1,4 @@
 posthog
+python-dotenv
+pytest
 google-api-python-client 
-python-dotenv 
