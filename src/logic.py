@@ -1,9 +1,17 @@
 import os
+import sentry_sdk
 from dotenv import load_dotenv
 from posthog import Posthog
 
 # Завантажуємо змінні з .env
 load_dotenv()
+
+# Ініціалізація Sentry
+sentry_sdk.init(
+    dsn=os.getenv("SENTRY_DSN"),
+    traces_sample_rate=1.0, 
+    environment="development", 
+)
 
 posthog_key = os.getenv('POSTHOG_API_KEY')
 posthog = Posthog(posthog_key, host='https://eu.i.posthog.com')
@@ -43,6 +51,15 @@ def analyze_brainrot_title(title):
 
 # --- НОВИЙ БЛОК ДЛЯ ВЗАЄМОДІЇ ---
 if __name__ == "__main__":
+
+    # Додаємо контекст користувача
+    sentry_sdk.set_user({
+        "id": "andrii", 
+        "email": "andrii.dovhanych.pp.2023@lpnu.ua",
+        "username": "Andrii Student",
+        "segment": "premium_user"
+        })
+    
     # Прапорець
     is_premium = posthog.feature_enabled('brainrot-premium-mode', 'andrii')
 
@@ -64,32 +81,40 @@ if __name__ == "__main__":
     print("Welcome to Brainrot Analyzer v1.0")
 
     while True:
-        user_input = input("\nEnter video title (or type 'exit' to quit): ")
+        with sentry_sdk.start_transaction(op="task", name="Analyze Title"):
+            user_input = input("\nEnter video title (or type 'exit' to quit): ")
 
-        if user_input.lower() == "exit":
-            # 3
+            if user_input.lower() == "break":
+                # Штучно викликаємо помилку для Sentry
+                raise ValueError("Sentry Test Error: Brainrot overload! [cite: 132]")
+
+            if user_input.lower() == "exit":
+                # Очистка контекстуh
+                sentry_sdk.set_user(None)
+                # 3
+                posthog.capture(
+                    distinct_id='andrii', 
+                    event='session_ended',
+                    properties={'total_analyses': analysis_count}
+                )
+                print(f'Total analyses done: {analysis_count}. Keep grinding, sigma!')
+                posthog.flush()
+                sentry_sdk.flush(timeout=2.0)
+                break
+
+            result = analyze_brainrot_title(user_input)
+
+            analysis_count += 1
+            print(f"Result: {result}")
+        
+            # 4
             posthog.capture(
                 distinct_id='andrii', 
-                event='session_ended',
-                properties={'total_analyses': analysis_count}
+                event='title_analyzed', 
+                properties={
+                    'user_input': user_input,  
+                    'analysis_result': result,        
+                    'is_successful': result != "L TITLE" 
+                }
             )
-            print(f'Total analyses done: {analysis_count}. Keep grinding, sigma!')
             posthog.flush()
-            break
-
-        result = analyze_brainrot_title(user_input)
-
-        analysis_count += 1
-        print(f"Result: {result}")
-        
-        # 4
-        posthog.capture(
-            distinct_id='andrii', 
-            event='title_analyzed', 
-            properties={
-                'user_input': user_input,  
-                'analysis_result': result,        
-                'is_successful': result != "L TITLE" 
-            }
-        )
-        posthog.flush()
